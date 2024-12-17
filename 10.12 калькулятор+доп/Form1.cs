@@ -158,6 +158,7 @@ namespace _10._12_калькулятор_доп
                 lblDisplay.Text = result.ToString();
                 AddToHistory($"Log({number}) = {result}");
                 lblHistory.Text = history[^1];
+                isNewEntry = true;
             }
             catch (Exception ex)
             {
@@ -171,12 +172,16 @@ namespace _10._12_калькулятор_доп
             {
                 double number = double.Parse(lblDisplay.Text);
 
+                if (Math.Abs(number % Math.PI)<0.001)
+                    throw new Exception("Нельзя посчитать тангенс для этого числа");
+
                 double result = Math.Tan(number);
 
                 lblDisplay.Text = result.ToString();
 
                 AddToHistory($"Tan({number}) = {result}");
                 lblHistory.Text = history[^1];
+                isNewEntry = true;
             }
             catch (Exception ex)
             {
@@ -197,6 +202,7 @@ namespace _10._12_калькулятор_доп
 
                 AddToHistory($"sin({number}) = {result}");
                 lblHistory.Text = history[^1];
+                isNewEntry = true;
             }
             catch (Exception ex)
             {
@@ -217,6 +223,7 @@ namespace _10._12_калькулятор_доп
 
                 AddToHistory($"Cos({number}) = {result}");
                 lblHistory.Text = history[^1];
+                isNewEntry = true;
             }
             catch (Exception ex)
             {
