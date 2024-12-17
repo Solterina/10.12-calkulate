@@ -11,6 +11,7 @@ namespace _10._12_калькулятор_доп
 
         double currentValue = 0;
         double previousValue = 0;
+        int minus = 1;
         string currentOperation = "";
         bool isNewEntry = true;
         List<string> history = [];
@@ -26,8 +27,9 @@ namespace _10._12_калькулятор_доп
 
             if (isNewEntry)
             {
-                lblDisplay.Text = btn.Text;
+                lblDisplay.Text = (int.Parse(btn.Text)*minus).ToString();
                 isNewEntry = false;
+                minus = 1;
             }
             else
             {
@@ -39,8 +41,12 @@ namespace _10._12_калькулятор_доп
         private void Operation_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-
-            if (!isNewEntry || (btn.Text != "" && btn.Text is not null))
+          
+            if(isNewEntry && btn.Text == "-")
+            {
+                minus = -1;
+            }
+            else if (!isNewEntry || (btn.Text != "" && btn.Text is not null))
             {
                 previousValue = currentValue;
                 currentOperation = btn.Text;
