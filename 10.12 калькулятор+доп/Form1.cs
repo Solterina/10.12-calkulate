@@ -104,6 +104,7 @@ namespace _10._12_калькулятор_доп
             lblDisplay.Text = "0";
             isNewEntry = true;
             history.Clear();
+            lblHistory.Text = " ";
         }
         private void btnPercent_Click(object sender, EventArgs e)
         {
